@@ -82,8 +82,11 @@ class NEWS0CKS_SIMPLE_OT_CreateLyrics(bpy.types.Operator):
             self.report({'WARNING'}, f"Font not found at {FONT_PATH}, using default font")
 
         for offset, line in enumerate(lyrics):
-            num = start_number + offset
-            obj_name = f"{num:03d}_{sanitize_name(line)}"
+            # commented out bc i want it to start at 0 every time now
+            # num = start_number + offset
+            label_num = start_number + offset
+            num = 1
+            obj_name = f"{label_num:03d}_{sanitize_name(line)}"
 
             # Create text object
             curve = bpy.data.curves.new(name=f"Text_{num:03d}", type='FONT')
